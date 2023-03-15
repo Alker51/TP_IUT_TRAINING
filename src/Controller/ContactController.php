@@ -10,7 +10,7 @@ use App\Entity\Contact;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact/{id}', name: 'app_contact_show', requirements: ['contactId' => '\d+'])]
+    #[Route('/contact/{id}', name: 'app_contact_show', requirements: ['id' => '\d+'])]
     public function show(Contact $contact = null): Response
     {
         if(is_null($contact))

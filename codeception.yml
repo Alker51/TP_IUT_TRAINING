@@ -12,3 +12,4 @@ extensions:
 params:
     - .env
     - .env.local
+    - .env.test.local

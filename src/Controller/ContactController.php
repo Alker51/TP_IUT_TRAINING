@@ -2,20 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Repository\ContactRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Contact;
 
 class ContactController extends AbstractController
 {
     #[Route('/contact/{id}', name: 'app_contact_show', requirements: ['id' => '\d+'])]
     public function show(Contact $contact = null): Response
     {
-        if(is_null($contact))
+        if (is_null($contact)) {
             throw $this->createNotFoundException("Le contact cet identifiant n'existe pas.");
-        
+        }
 
         return $this->render('contact/show.html.twig', ['contact' => $contact]);
     }

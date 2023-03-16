@@ -90,7 +90,12 @@
             "symfony server:stop"
         ],
         "test:cs": "vendor/bin/php-cs-fixer fix src --dry-run",
-        "fix:cs": "vendor/bin/php-cs-fixer fix src"
+        "fix:cs": "vendor/bin/php-cs-fixer fix src",
+        "test:codeception" : "vendor/bin/codecept run --steps",
+        "test":[
+            "composer test:cs",
+            "composer test:codeception"
+        ]
     },
     "conflict": {
         "symfony/symfony": "*"

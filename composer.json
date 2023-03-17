@@ -91,7 +91,12 @@
         ],
         "test:cs": "vendor/bin/php-cs-fixer fix src --dry-run",
         "fix:cs": "vendor/bin/php-cs-fixer fix src",
-        "test:codeception" : "vendor/bin/codecept run --steps",
+        "test:codeception": [
+            "php bin/console doctrine:database:drop --force --quiet --env=test",
+            "php bin/console doctrine:database:create --quiet --env=test",
+            "php bin/console doctrine:schema:create --quiet --env=test",
+            "vendor/bin/codecept run --steps"
+        ],
         "test":[
             "composer test:cs",
             "composer test:codeception"
@@ -108,7 +113,7 @@
         "stop": "Stop the current Symfony server.",
         "test:cs": "Run a check of the code with php-cs-fixer without change.",
         "fix:cs": "Check and modify the code with php_cs_fixer",
-        "test:codeception": "Run all test suite of codeception",
+        "test:codeception": "Initiate a db test and run all test suite of codeception",
         "test": "Run a check of the code and if code ok, run test of codeception.",
         "db": "Reinitialise database and fill it with data fixtures"
     },

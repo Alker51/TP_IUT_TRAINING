@@ -103,6 +103,15 @@
             "php bin/console doctrine:fixtures:load --no-interaction"
         ]
     },
+    "scripts-descriptions": {
+        "start": "Start Symfony server without composer timeout!",
+        "stop": "Stop the current Symfony server.",
+        "test:cs": "Run a check of the code with php-cs-fixer without change.",
+        "fix:cs": "Check and modify the code with php_cs_fixer",
+        "test:codeception": "Run all test suite of codeception",
+        "test": "Run a check of the code and if code ok, run test of codeception.",
+        "db": "Reinitialise database and fill it with data fixtures"
+    },
     "conflict": {
         "symfony/symfony": "*"
     },

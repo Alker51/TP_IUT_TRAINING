@@ -7,6 +7,7 @@ use App\Repository\ContactRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
+use Faker\Factory;
 
 /**
  * @extends ModelFactory<Contact>
@@ -46,7 +47,7 @@ final class ContactFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
-        $faker = Faker\Factory::create('fr_FR');
+        $faker = Factory::create('fr_FR');
 
         $firstName = $faker->firstName();
         $lastName = $faker->lastName();

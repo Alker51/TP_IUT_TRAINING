@@ -10,6 +10,11 @@ class ContactFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $contacts = ContactFactory::createMany(150);
+        $contacts = ContactFactory::createMany(4);
+        $contacts = ContactFactory::createOne([
+            'firstName' => 'Maxime',
+            'lastName' =>'Ihuellou',
+            'email' => 'Maxime.Ihuellou@gmail.gl'
+        ]);
     }
 }

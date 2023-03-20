@@ -18,15 +18,18 @@ class IndexCest
         $I->seeResponseCodeIsSuccessful();
         $I->seeInTitle('Liste des contacts');
         $I->see('Liste des contacts', 'h1');
-        $I->seeNumberOfElements('li', 195);
+        $I->seeNumberOfElements('li', 5);
     }
 
     public function tryAccessFirstContact(ControllerTester $I)
     {
-        $I->amOnPage('/contact');
-        $I->seeResponseCodeIsSuccessful();
-        $I->click('(//li)[1]');
-        $I->amOnPage('/contact/1');
-        $I->seeCurrentRouteIs('app_contact_show', ['id' => 1]);
+        $this->tryAccessToFullList($I);
+
+        $idClick = 5;
+
+        $I->click("(//li)[$idClick]");
+        $I->amOnPage("/contact/$idClick");
+        $I->seeCurrentRouteIs('app_contact_show', ['id' => $idClick]);
+        $I->see('Ihuellou Maxime', 'h1');
     }
 }

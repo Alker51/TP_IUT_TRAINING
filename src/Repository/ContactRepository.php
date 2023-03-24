@@ -39,6 +39,25 @@ class ContactRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @return Contact[] $contacts
+     */
+    public function search(string $search = ''): array
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        if (!empty($search)) {
+            $qb->where('c.firstname LIKE :search')
+                ->orWhere('c.lastname LIKE :search')
+                ->orWhere('c.email LIKE :search')
+                ->setParameter('search', '%'.$search.'%');
+        }
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+
 //    /**
 //     * @return Contact[] Returns an array of Contact objects
 //     */

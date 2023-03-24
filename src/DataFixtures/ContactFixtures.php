@@ -2,9 +2,9 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\ContactFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use App\Factory\ContactFactory;
 
 class ContactFixtures extends Fixture
 {
@@ -13,8 +13,8 @@ class ContactFixtures extends Fixture
         $contacts = ContactFactory::createMany(4);
         $contacts = ContactFactory::createOne([
             'firstName' => 'Maxime',
-            'lastName' =>'Ihuellou',
-            'email' => 'Maxime.Ihuellou@gmail.gl'
+            'lastName' => 'Ihuellou',
+            'email' => 'Maxime.Ihuellou@gmail.gl',
         ]);
     }
 }

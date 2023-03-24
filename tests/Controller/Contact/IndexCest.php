@@ -18,7 +18,7 @@ class IndexCest
         $I->seeResponseCodeIsSuccessful();
         $I->seeInTitle('Liste des contacts');
         $I->see('Liste des contacts', 'h1');
-        $I->seeNumberOfElements('li', 5);
+        $I->seeNumberOfElements('//ul[@class="contacts"]/li', 5);
     }
 
     public function tryAccessFirstContact(ControllerTester $I)

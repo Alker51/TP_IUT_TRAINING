@@ -1,0 +1,8 @@
+span.firstname {
+    font-weight: bolder;
+}
+
+span.lastname {
+    font-weight: lighter;
+    font-size: small;
+}

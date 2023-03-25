@@ -22,6 +22,12 @@ class Contact
     #[ORM\Column(length: 100)]
     private ?string $email = null;
 
+    #[ORM\Column(length: 20)]
+    private ?string $phone = null;
+
+    #[ORM\ManyToOne(inversedBy: 'contacts')]
+    private ?category $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +65,30 @@ class Contact
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getCategory(): ?category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

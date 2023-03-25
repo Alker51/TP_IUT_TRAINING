@@ -7,29 +7,39 @@ use App\Tests\ControllerTester;
 
 class IndexCest
 {
-    public function _before(ControllerTester $I)
+    public function _before(ControllerTester $I): void
     {
     }
 
     // tests
-    public function tryAccessToFullList(ControllerTester $I)
+    public function tryAccessToFullList(ControllerTester $I): void
     {
-        $I->amOnPage('/contact');
+        $I->amOnPage("/contact");
         $I->seeResponseCodeIsSuccessful();
-        $I->seeInTitle('Liste des contacts');
-        $I->see('Liste des contacts', 'h1');
-        $I->seeNumberOfElements('//ul[@class="contacts"]/li', 5);
+        $I->seeInTitle("Liste des contacts");
+        $I->see("Liste des contacts", "h1");
+        $I->seeNumberOfElements("//ul[@class='contacts']/li", 5);
     }
 
-    public function tryAccessFirstContact(ControllerTester $I)
+    public function tryAccessFirstContactAfterFullList(ControllerTester $I, int $searchID = 5): void
     {
         $this->tryAccessToFullList($I);
 
-        $idClick = 5;
+        $I->click("(//ul[@class='contacts']//li)[$searchID]");
+        $I->amOnPage("/contact/$searchID");
+        $I->seeCurrentRouteIs("app_contact_show", ["id" => $searchID]);
+        $I->see("Ihuellou Maxime", "h1");
+    }
 
-        $I->click("(//li)[$idClick]");
-        $I->amOnPage("/contact/$idClick");
-        $I->seeCurrentRouteIs('app_contact_show', ['id' => $idClick]);
-        $I->see('Ihuellou Maxime', 'h1');
+    public function trySearchFunction(ControllerTester $I): void
+    {
+        $this->tryAccessToFullList($I);
+
+        $I->fillField("//input[@name='search']", "Maxime");
+        $I->click("//button[@type='submit']");
+        $I->see("Maxime", "li");
+        $I->click("//ul[@class='contacts']/li/a");
+        $I->seeCurrentRouteIs("app_contact_show", ["id" => 5]);
+        $I->see("Ihuellou Maxime", "h1");
     }
 }

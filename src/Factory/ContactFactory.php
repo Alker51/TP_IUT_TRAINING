@@ -2,6 +2,7 @@
 
 namespace App\Factory;
 
+use App\Entity\Category;
 use App\Entity\Contact;
 use App\Repository\ContactRepository;
 use Faker\Factory;
@@ -42,8 +43,6 @@ final class ContactFactory extends ModelFactory
 
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories
-     *
-     * @todo add your default values here
      */
     protected function getDefaults(): array
     {
@@ -52,11 +51,13 @@ final class ContactFactory extends ModelFactory
         $firstName = $faker->firstName();
         $lastName = $faker->lastName();
         $email = "$firstName.$lastName@".$faker->domainName();
+        $phone = $faker->phoneNumber();
 
         return [
                 'email' => $email,
                 'firstname' => $firstName,
                 'lastname' => $lastName,
+                'phone' => $phone,
             ];
     }
 

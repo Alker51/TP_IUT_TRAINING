@@ -24,7 +24,7 @@ class ContactController extends AbstractController
     #[Route('/contact', name: 'app_contact')]
     public function index(ContactRepository $contactRepository, Request $request): Response
     {
-        $search = $request->query->get('search', '');
+        $search = $request->get('search', '');
 
         $contacts = $contactRepository->search($search);
 

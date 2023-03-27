@@ -26,7 +26,7 @@ class Contact
     private ?string $phone = null;
 
     #[ORM\ManyToOne(inversedBy: 'contacts')]
-    private ?category $category = null;
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -81,12 +81,12 @@ class Contact
         return $this;
     }
 
-    public function getCategory(): ?category
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
 
-    public function setCategory(?category $category): self
+    public function setCategory(?Category $category): self
     {
         $this->category = $category;
 

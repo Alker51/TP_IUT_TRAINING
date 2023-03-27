@@ -11,10 +11,6 @@
 <div class="example-wrapper">
     <h1>Liste des categories :</h1>
 
-    <ul>
-        {% for category in list %}
-            <li>{{ category.name }}</li>
-        {% endfor %}
-    </ul>
+    {{ include(':contact:_contacts.html.twig', {contacts: contacts}) }}
 </div>
 {% endblock %}

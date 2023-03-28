@@ -2,7 +2,6 @@
 
 namespace App\Factory;
 
-use App\Entity\Category;
 use App\Entity\Contact;
 use App\Repository\ContactRepository;
 use Faker\Factory;

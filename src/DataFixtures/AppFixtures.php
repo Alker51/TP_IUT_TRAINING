@@ -10,7 +10,7 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $categoryEmpty = CategoryFactory::createOne(["name" => 'Vide']);
+        $categoryEmpty = CategoryFactory::createOne(['name' => 'Vide']);
     }
 
     public function getDependencies(): array

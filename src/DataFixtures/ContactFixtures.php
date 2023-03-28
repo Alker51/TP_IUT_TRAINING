@@ -16,9 +16,7 @@ class ContactFixtures extends Fixture
             $faker = Factory::create();
             if ($faker->boolean(90)) {
                 return ['category' => CategoryFactory::random()];
-            }
-            else
-            {
+            } else {
                 return ['category' => null];
             }
         });
@@ -27,7 +25,7 @@ class ContactFixtures extends Fixture
             'firstName' => 'Maxime',
             'lastName' => 'Ihuellou',
             'email' => 'Maxime.Ihuellou@gmail.gl',
-            'category' => CategoryFactory::random()
+            'category' => CategoryFactory::random(),
         ]);
     }
 

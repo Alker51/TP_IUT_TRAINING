@@ -13,7 +13,7 @@ class CategoryFixtures extends Fixture
         $datas = json_decode(file_get_contents(__DIR__.'/data/Category.json'));
 
         foreach ($datas as $nameCategory) {
-            $category = CategoryFactory::createOne(["name" => $nameCategory->name]);
+            $category = CategoryFactory::createOne(['name' => $nameCategory->name]);
         }
     }
 }

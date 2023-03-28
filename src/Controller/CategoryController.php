@@ -10,6 +10,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CategoryController extends AbstractController
 {
+    #[Route('/category/{id}', name: 'app_category_show')]
+    public function show(Category $category, CategoryRepository $categoryRepository): Response
+    {
+        $contactInCat = $categoryRepository->findByidCategory($category);
+
+        return $this->render('category/show.html.twig', ['categories' => $contactInCat]);
+    }
+
     #[Route('/category', name: 'app_category')]
     public function index(CategoryRepository $categoryRepository): Response
     {
@@ -17,11 +25,7 @@ class CategoryController extends AbstractController
 
         return $this->render('category/index.html.twig', [
             'list' => $list,
+            'isCategory' => true,
         ]);
-    }
-    #[Route('/category/{id}', name: 'app_category_show')]
-    public function show(Category $category): Response
-    {
-        return $this->render('category/show.html.twig', ['category' => $category]);
     }
 }

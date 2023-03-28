@@ -39,6 +39,18 @@ class CategoryRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByidCategory(Category $cat)
+    {
+        $qb = $this->createQueryBuilder('cat')
+                ->from('App:Contact', 'c')
+                ->where('c.category = :cat')
+                ->setParameter('cat', $cat);
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+
 //    /**
 //     * @return Category[] Returns an array of Category objects
 //     */

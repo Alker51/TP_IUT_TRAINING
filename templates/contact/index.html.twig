@@ -11,12 +11,6 @@
 <div class="example-wrapper">
     <h1>Liste des contacts</h1>
 
-    <ul class="contacts">
-    {% for contact in contacts %}
-        <li>
-            <a href="{{ path('app_contact_show', {id: contact.id}) }}">{{contact.id}} -- <span class="firstname">{{ contact.firstname }}</span> -- <span class="lastname">{{ contact.lastname }}</span> -- {{ contact.email }}</a>
-        </li>
-    {% endfor %}
-    </ul>
+    {{ include('contact/_contacts.html.twig', {contacts: contacts, isCategory: isCategory}) }}
 </div>
 {% endblock %}

@@ -15,7 +15,7 @@ class CategoryController extends AbstractController
     {
         $contactInCat = $categoryRepository->findByidCategory($category);
 
-        return $this->render('category/show.html.twig', ['categories' => $contactInCat]);
+        return $this->render('category/show.html.twig', ['categoryContacts' => $contactInCat, 'isCategory' => false, 'category' => $category]);
     }
 
     #[Route('/category', name: 'app_category')]

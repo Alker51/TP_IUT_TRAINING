@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ contact.lastname }} {{ contact.firstname }}{% endblock %}
+{% block title %}{{ category.name }}{% endblock %}
 
 {% block body %}
     <style>
@@ -9,17 +9,9 @@
     </style>
 
     <div class="example-wrapper">
-        <h1></h1>
+        <h1>Catégorie "{{ category.name }}"</h1>
 
-        {% for contact in categories %}
-        <p> ID : {{contact.id}} <br>
-            Firstname : {{ contact. }} <br>
-            Lastname : {{ contact.lastname }} <br>
-            Email : {{ contact.email }} <br>
-            Phone : {{ contact.phone }} <br>
-            Category : {{ contact.Category.name ?? 'Pas de categorie'}}
-        </p>
-        {%  endfor %}
+        {{ include('contact/_contacts.html.twig', {contacts: categoryContacts, isCategory: isCategory}) }}
 
     </div>
 {% endblock %}

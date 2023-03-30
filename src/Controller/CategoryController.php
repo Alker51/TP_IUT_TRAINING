@@ -13,15 +13,15 @@ class CategoryController extends AbstractController
     #[Route('/category/{id}', name: 'app_category_show')]
     public function show(Category $category, CategoryRepository $categoryRepository): Response
     {
-        $contactInCat = $categoryRepository->findByidCategory($category);
-
+        $contactInCat = $categoryRepository->findByIdCategory($category);
+        dump($contactInCat);
         return $this->render('category/show.html.twig', ['categoryContacts' => $contactInCat, 'isCategory' => false, 'category' => $category]);
     }
 
     #[Route('/category', name: 'app_category')]
     public function index(CategoryRepository $categoryRepository): Response
     {
-        $list = $categoryRepository->findAll();
+        $list = $categoryRepository->getAllCategory();
 
         return $this->render('category/index.html.twig', [
             'list' => $list,

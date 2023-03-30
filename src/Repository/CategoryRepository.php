@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Category;
+use App\Entity\Contact;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -39,7 +40,7 @@ class CategoryRepository extends ServiceEntityRepository
         }
     }
 
-    public function findByidCategory(Category $cat)
+    public function findByIdCategory(Category $cat)
     {
         $qb = $this->createQueryBuilder('cat')
                 ->select('c')
@@ -47,6 +48,16 @@ class CategoryRepository extends ServiceEntityRepository
                 ->where('c.category = :cat')
                 ->setParameter('cat', $cat)
                 ->orderBy('c.firstname', 'ASC');
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+
+    public function getAllCategory()
+    {
+        $qb = $this->createQueryBuilder('cat')
+            ->orderBy('cat.name', 'ASC');
 
         $query = $qb->getQuery();
 

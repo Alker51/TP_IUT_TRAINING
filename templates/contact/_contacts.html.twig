@@ -1,7 +1,7 @@
 <ul class="contacts">
     {% for contact in contacts %}
         <li>
-            <a {% if isCategory is same as(false) %} href="{{ path('app_contact_show', {id: contact.id}) }}" {% else %} href="{{ path('app_category_show', {id: contact.id}) }}" {% endif %}>{{contact.id}} -- {% if contact.name is defined %}<span class="name">{{ contact.name }}{% endif %}{% if contact.firstname is defined %}<span class="firstname">{{ contact.firstname }}</span> --{% endif %}{% if contact.lastname is defined %} <span class="lastname">{{ contact.lastname  ?? ''}}</span> -- {% endif %}{% if contact.email is defined %}{{ contact.email }} -- {% endif %}{% if contact.phone is defined %}{{ contact.phone }} -- {% endif %}{% if contact.Category.name is defined %}{{ contact.Category.name }}{% endif %}</a>
+            <a {% if isCategory is same as(false) %} href="{{ path('app_contact_show', {id: contact.id}) }}" {% else %} href="{{ path('app_category_show', {id: contact.id}) }}" {% endif %}>{% if contact.name is defined %}<span class="name">{{ contact.name }}{% endif %}{% if contact.firstname is defined %}<span class="firstname">{{ contact.firstname }}</span> --{% endif %}{% if contact.lastname is defined %} <span class="lastname">{{ contact.lastname  ?? ''}}</span> -- {% endif %}{% if contact.email is defined %}{{ contact.email }} -- {% endif %}{% if contact.phone is defined %}{{ contact.phone }} -- {% endif %}{% if contact.Category.name is defined %}{{ contact.Category.name }}{% endif %} -- {{contact.id}}</a>
         </li>
     {% endfor %}
 </ul>

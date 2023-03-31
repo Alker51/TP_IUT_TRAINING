@@ -22,7 +22,7 @@ class CategoryController extends AbstractController
     public function index(CategoryRepository $categoryRepository): Response
     {
         $list = $categoryRepository->getAllCategory();
-
+        dump($list);
         return $this->render('category/index.html.twig', [
             'list' => $list,
             'isCategory' => true,

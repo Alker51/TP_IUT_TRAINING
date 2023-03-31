@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\Category;
-use App\Entity\Contact;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -57,6 +56,9 @@ class CategoryRepository extends ServiceEntityRepository
     public function getAllCategory()
     {
         $qb = $this->createQueryBuilder('cat')
+            ->addSelect('COUNT(c.id) as count')
+            ->leftJoin('cat.contacts', 'c')
+            ->groupBy('c.category')
             ->orderBy('cat.name', 'ASC');
 
         $query = $qb->getQuery();

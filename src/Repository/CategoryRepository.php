@@ -56,9 +56,20 @@ class CategoryRepository extends ServiceEntityRepository
     public function getAllCategory()
     {
         $qb = $this->createQueryBuilder('cat')
-            ->addSelect('COUNT(c.id) as count')
-            ->leftJoin('cat.contacts', 'c')
-            ->groupBy('c.category')
+            ->orderBy('cat.name', 'ASC');
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+
+    public function findAllAlphabeticallyWithContactCount()
+    {
+        $qb = $this->createQueryBuilder('cat')
+            ->select('cat AS category')
+            ->addSelect('COUNT(cli.id) as count')
+            ->leftJoin('cat.contacts', 'cli')
+            ->groupBy('cli.category')
             ->orderBy('cat.name', 'ASC');
 
         $query = $qb->getQuery();

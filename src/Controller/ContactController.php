@@ -29,7 +29,9 @@ class ContactController extends AbstractController
         $search = $request->get('search', '');
 
         $contacts = $contactRepository->search($search);
-
+        dump($contacts);
         return $this->render('contact/index.html.twig', ['contacts' => $contacts, 'isCategory' => false]);
+
+
     }
 }

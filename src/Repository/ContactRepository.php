@@ -40,12 +40,12 @@ class ContactRepository extends ServiceEntityRepository
         }
     }
 
-    /**
-     * @return Contact[] $contacts
-     */
     public function search(string $search = ''): array
     {
-        $qb = $this->createQueryBuilder('c');
+        $qb = $this->createQueryBuilder('c')
+            ->select('c AS contact')
+            ->leftJoin('App:Category', 'cat', Join::WITH, 'c.category = cat.id')
+            ->addSelect('cat AS category');
 
         if (!empty($search)) {
             $qb->where('c.firstname LIKE :search')
@@ -56,6 +56,9 @@ class ContactRepository extends ServiceEntityRepository
 
         $query = $qb->getQuery();
 
+        if (!empty($search)) {
+            dump($query->execute());
+        }
         return $query->execute();
     }
 

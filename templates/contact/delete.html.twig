@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Suppression de {{ contact.lastname }}, {{ contact.firstname }}{% endblock %}
+{% set title = "Suppression de " ~ contact.lastname ~", "~ contact.firstname %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-<h1>Suppression de {{ contact.lastname }}, {{ contact.firstname }}</h1>
+    <h1>{{ title }}</h1>
 {% endblock %}

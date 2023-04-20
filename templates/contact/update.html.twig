@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Édition de {{ contact.lastname }}, {{ contact.firstname }}{% endblock %}
+{% set title = "Édition de " ~ contact.lastname ~", "~ contact.firstname %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-    <h1>Édition de {{ contact.lastname }}, {{ contact.firstname }}</h1>
+    <h1>{{ title }}</h1>
 {% endblock %}
